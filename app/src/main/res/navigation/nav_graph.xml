@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splash_fragment">
+
+    <fragment
+        android:id="@+id/splash_fragment"
+        android:name="com.monstarlab.magicbox.ui.features.splash.SplashFragment"
+        android:label="SplashFragment"
+        tool:layout="@layout/splash_fragment">
+
+        <!--<action
+            android:id="@+id/action_camera_to_permissions"
+            app:destination="@id/permissions_fragment"
+            app:popUpTo="@id/camera_fragment"
+            app:popUpToInclusive="true"/>-->
+
+        <action
+            android:id="@+id/action_splash_fragment_to_home_fragment"
+            app:destination="@id/home_fragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/home_fragment"
+        android:name="com.monstarlab.magicbox.ui.features.home.HomeFragment"
+        android:label="HomeFragment"
+        tool:layout="@layout/home_fragment">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/details_fragment"
+        android:name="com.monstarlab.magicbox.ui.features.details.DetailsFragment"
+        android:label="DetailsFragment"
+        tool:layout="@layout/details_fragment">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/favorite_fragment"
+        android:name="com.monstarlab.magicbox.ui.features.favorite.FavoriteFragment"
+        android:label="FavoriteFragment"
+        tool:layout="@layout/favorite_fragment">
+
+    </fragment>
+
+</navigation>
