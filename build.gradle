@@ -5,6 +5,7 @@ buildscript {
     ext.room_version = "2.2.5"
     ext.lifecycle_version = "2.2.0"
     ext.glide_version = "4.11.0"
+    ext.dagger_version = "2.28.3"
     ext.java_version = JavaVersion.VERSION_1_8
 
     repositories {
