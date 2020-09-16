@@ -1,9 +1,6 @@
 package com.monstarlab.magicbox.data.local.dao
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 import com.monstarlab.magicbox.data.model.Movie
 
 @Dao
@@ -12,10 +9,13 @@ interface FavoriteDao {
     @Query("SELECT * FROM Movie")
     fun getAll(): List<Movie>
 
-    @Insert
-    fun insertAll(vararg movies: Movie)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertFavorite(vararg movies: Movie)
+
+    @Update
+    fun updateFavorite(movie: Movie)
 
     @Delete
-    fun delete(movie: Movie)
+    fun deleteFavorite(movie: Movie)
 
 }

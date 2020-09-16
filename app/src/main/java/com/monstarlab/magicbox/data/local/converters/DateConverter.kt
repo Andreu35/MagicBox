@@ -1,9 +1,9 @@
-package com.monstarlab.magicbox.data.local
+package com.monstarlab.magicbox.data.local.converters
 
 import androidx.room.TypeConverter
 import java.util.*
 
-class Converters {
+class DateConverter {
 
     @TypeConverter
     fun fromTimestamp(value: Long?): Date? {
@@ -14,5 +14,4 @@ class Converters {
     fun dateToTimestamp(date: Date?): Long? {
         return date?.time?.toLong()
     }
-
 }
