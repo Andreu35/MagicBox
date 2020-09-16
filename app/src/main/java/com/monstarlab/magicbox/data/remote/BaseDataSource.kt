@@ -1,12 +1,13 @@
 package com.monstarlab.magicbox.data.remote
 
+import androidx.lifecycle.MutableLiveData
 import com.monstarlab.magicbox.utils.Resource
 import retrofit2.Response
 import timber.log.Timber
 
 abstract class BaseDataSource {
 
-    protected suspend fun <T> getResult(call: suspend () -> Response<T>): Resource<T> {
+    protected suspend fun <T> getResult(call: suspend () -> Response<T>): MutableLiveData<Resource<T>> {
         try {
             val response = call()
             if (response.isSuccessful) {
@@ -19,7 +20,7 @@ abstract class BaseDataSource {
         }
     }
 
-    private fun <T> error(message: String): Resource<T> {
+    private fun <T> error(message: String): MutableLiveData<Resource<T>> {
         Timber.d(message)
         return Resource.error("Network call has failed for a following reason: $message")
     }

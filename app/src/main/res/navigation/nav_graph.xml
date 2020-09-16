@@ -3,31 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tool="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/splash_fragment">
+    app:startDestination="@id/home_fragment">
 
     <fragment
-        android:id="@+id/splash_fragment"
-        android:name="com.monstarlab.magicbox.ui.features.splash.SplashFragment"
-        android:label="SplashFragment"
-        tool:layout="@layout/splash_fragment">
+        android:id="@+id/home_fragment"
+        android:name="com.monstarlab.magicbox.ui.features.home.HomeFragment"
+        android:label="HomeFragment"
+        tool:layout="@layout/fragment_home">
 
         <!--<action
             android:id="@+id/action_camera_to_permissions"
             app:destination="@id/permissions_fragment"
             app:popUpTo="@id/camera_fragment"
             app:popUpToInclusive="true"/>-->
-
-        <action
-            android:id="@+id/action_splash_fragment_to_home_fragment"
-            app:destination="@id/home_fragment" />
-
-    </fragment>
-
-    <fragment
-        android:id="@+id/home_fragment"
-        android:name="com.monstarlab.magicbox.ui.features.home.HomeFragment"
-        android:label="HomeFragment"
-        tool:layout="@layout/home_fragment">
 
     </fragment>
 

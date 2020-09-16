@@ -2,4 +2,7 @@
     <string name="app_name">Magic Box</string>
     <string name="api_key">f4ec271066616fdcd36dbcbcdb685c71</string>
     <string name="api_token">eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmNGVjMjcxMDY2NjE2ZmRjZDM2ZGJjYmNkYjY4NWM3MSIsInN1YiI6IjVmNjAwNjkyNzA2YjlmMDAzOTA1NDNkYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.m4_rWsy0XllJx7vMhw8f4bZeRQRRsAXVzYsutq9539s</string>
+    <string name="images_base_url">https://image.tmdb.org/t/p/w500/%s</string>
+    <!-- HOME SCREEN -->
+    <string name="popular">Popular Movies</string>
 </resources>

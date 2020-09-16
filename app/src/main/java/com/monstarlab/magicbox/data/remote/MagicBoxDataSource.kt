@@ -8,14 +8,14 @@ import javax.inject.Inject
 class MagicBoxDataSource @Inject constructor(private val api: MagicBoxAPI, private val context: Context): BaseDataSource() {
 
     suspend fun getPopular() = getResult {
-        api.getPopularMovies(context.getString(R.string.api_key))
+        api.getPopularMovies(context.getString(R.string.api_key), context.getString(R.string.api_token))
     }
 
     suspend fun getMovie(id: Int) = getResult {
-        api.getMovie(id, context.getString(R.string.api_key))
+        api.getMovie(id, context.getString(R.string.api_key), context.getString(R.string.api_token))
     }
 
     suspend fun searchMovie(query: String) = getResult {
-        api.getSearchMovies(context.getString(R.string.api_key), query)
+        api.getSearchMovies(context.getString(R.string.api_key), query, context.getString(R.string.api_token))
     }
 }
