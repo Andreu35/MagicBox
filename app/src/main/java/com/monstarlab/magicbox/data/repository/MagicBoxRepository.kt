@@ -6,7 +6,7 @@ import javax.inject.Inject
 
 class MagicBoxRepository @Inject constructor(private val remoteDataSource: MagicBoxDataSource, private val localDataSource: FavoriteDao) {
 
-    suspend fun getPopular() = remoteDataSource.getPopular()
+    suspend fun getPopular(page: Int) = remoteDataSource.getPopular(page)
     suspend fun getMovie(id: Int) = remoteDataSource.getMovie(id)
-    suspend fun getSearched(query: String) = remoteDataSource.searchMovie(query)
+    suspend fun getSearched(query: String, page: Int) = remoteDataSource.searchMovie(query, page)
 }

@@ -5,7 +5,7 @@ data class HomeResponse(
     val page: Int,
     val total_results: Int,
     val total_pages: Int,
-    val results: List<Movie>
+    val results: MutableList<Movie>
 
 ) {
     override fun toString(): String {

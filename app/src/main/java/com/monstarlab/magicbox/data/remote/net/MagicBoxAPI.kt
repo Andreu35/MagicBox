@@ -11,18 +11,18 @@ import retrofit2.http.Query
 interface MagicBoxAPI {
 
     @GET("/3/movie/popular")
-    suspend fun getPopularMovies(@Query("api_key") key: String,
-                         @Header("Authorization") token: String): Response<HomeResponse>
+    suspend fun getPopularMovies(
+        @Query("api_key") key: String,
+        @Query("page") page: Int): Response<HomeResponse>
 
     @GET("/3/search/movie")
     suspend fun getSearchMovies(
         @Query("api_key") key: String,
         @Query("query") query: String,
-        @Header("Authorization") token: String): Response<HomeResponse>
+        @Query("page") page: Int): Response<HomeResponse>
 
     @GET("/3/movie")
     suspend fun getMovie(
         @Query("movie_id") id: Int,
-        @Query("api_key") key: String,
-        @Header("Authorization") token: String): Response<Movie>
+        @Query("api_key") key: String): Response<Movie>
 }

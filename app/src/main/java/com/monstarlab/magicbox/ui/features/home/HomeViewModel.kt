@@ -13,16 +13,27 @@ import kotlinx.coroutines.launch
 
 class HomeViewModel @ViewModelInject constructor(private val repository: MagicBoxRepository) : ViewModel() {
 
-    private var _popularMoviesSuccessCallback = MutableLiveData<Resource<HomeResponse>>()
-    val popularMovies: LiveData<Resource<HomeResponse>> = _popularMoviesSuccessCallback
+    private var _moviesSuccessCallback = MutableLiveData<Resource<HomeResponse>>()
+    val movieList: LiveData<Resource<HomeResponse>> = _moviesSuccessCallback
 
     /**
-     * Fetch PopularData
+     * Fetch Popular Movies from the first Page.
+     * @param page Page Number
      */
-    fun fetchPopularMovies() {
+    fun fetchPopularMovies(page: Int) {
         viewModelScope.launch(Dispatchers.IO) {
-            _popularMoviesSuccessCallback.postValue(repository.getPopular().value)
+            _moviesSuccessCallback.postValue(repository.getPopular(page).value)
+        }
+    }
 
+    /**
+     * Search Movie from Query and Page
+     * @param query Query Text
+     * @param page Page Number
+     */
+    fun searchMovie(query: String, page: Int) {
+        viewModelScope.launch(Dispatchers.IO) {
+            _moviesSuccessCallback.postValue(repository.getSearched(query, page).value)
         }
     }
 }
