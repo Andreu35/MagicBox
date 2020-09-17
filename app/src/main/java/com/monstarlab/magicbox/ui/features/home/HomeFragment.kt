@@ -52,9 +52,8 @@ class HomeFragment : BaseFragment(), RecyclerItemClickListener {
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
-                adapter?.cleanAdapter()
-                adapter = null
-                fetchSearchedMovies(query)
+                cleanAndFetch(query)
+                preferences.setString(Constants.PREF_QUERY, query)
                 actionMenuItem.collapseActionView()
                 return false
             }
@@ -130,6 +129,12 @@ class HomeFragment : BaseFragment(), RecyclerItemClickListener {
         }
     }
 
+    private fun cleanAndFetch(query: String){
+        adapter?.cleanAdapter()
+        adapter = null
+        fetchSearchedMovies(query)
+    }
+
     /**
      * RecyclerView Item Click Listener
      * @param view View Clicked
@@ -155,5 +160,14 @@ class HomeFragment : BaseFragment(), RecyclerItemClickListener {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if(preferences.contains(Constants.PREF_QUERY)){
+            preferences.getString(Constants.PREF_QUERY, "A")?.let {
+                cleanAndFetch(it)
+            }
+        }
     }
 }
