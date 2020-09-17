@@ -10,7 +10,7 @@ import com.monstarlab.magicbox.data.local.dao.FavoriteDao
 import com.monstarlab.magicbox.data.model.Movie
 
 @Database(entities = [Movie::class], version = 1, exportSchema = false)
-@TypeConverters(value = [DateConverter::class, IntegerConverter::class, KeywordConverter::class, ReviewConverter::class, VideoConverter::class])
+@TypeConverters(value = [DateConverter::class, GenreConverter::class, IntegerConverter::class])
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun favoriteDao(): FavoriteDao

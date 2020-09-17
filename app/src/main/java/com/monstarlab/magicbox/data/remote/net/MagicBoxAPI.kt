@@ -5,24 +5,25 @@ import com.monstarlab.magicbox.data.model.HomeResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Header
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 
 interface MagicBoxAPI {
 
-    @GET("/3/movie/popular")
-    suspend fun getPopularMovies(
+    @GET("/3/search/movie")
+    suspend fun getSearchMoviesWithPage(
         @Query("api_key") key: String,
+        @Query("query") query: String,
         @Query("page") page: Int): Response<HomeResponse>
 
     @GET("/3/search/movie")
     suspend fun getSearchMovies(
         @Query("api_key") key: String,
-        @Query("query") query: String,
-        @Query("page") page: Int): Response<HomeResponse>
+        @Query("query") query: String): Response<HomeResponse>
 
-    @GET("/3/movie")
+    @GET("/3/movie/{movie_id}")
     suspend fun getMovie(
-        @Query("movie_id") id: Int,
+        @Path("movie_id") id: Int,
         @Query("api_key") key: String): Response<Movie>
 }

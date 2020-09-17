@@ -1,7 +1,9 @@
 package com.monstarlab.magicbox.ui.features.favorite
 
-import androidx.fragment.app.Fragment
+import com.monstarlab.magicbox.ui.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
 
-class FavoriteFragment : Fragment() {
+@AndroidEntryPoint
+class FavoriteFragment : BaseFragment() {
 
 }

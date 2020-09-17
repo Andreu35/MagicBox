@@ -98,6 +98,9 @@ dependencies {
     //Timber
     implementation 'com.jakewharton.timber:timber:4.7.1'
 
+    // RatingBar
+    implementation 'com.github.Jamshid-M:ExactRatingBar:1.0.0'
+
     // Unit testing
     testImplementation 'androidx.test.ext:junit:1.1.2'
     testImplementation 'androidx.test:rules:1.3.0'

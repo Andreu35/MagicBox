@@ -17,23 +17,23 @@ class HomeViewModel @ViewModelInject constructor(private val repository: MagicBo
     val movieList: LiveData<Resource<HomeResponse>> = _moviesSuccessCallback
 
     /**
-     * Fetch Popular Movies from the first Page.
-     * @param page Page Number
-     */
-    fun fetchPopularMovies(page: Int) {
-        viewModelScope.launch(Dispatchers.IO) {
-            _moviesSuccessCallback.postValue(repository.getPopular(page).value)
-        }
-    }
-
-    /**
      * Search Movie from Query and Page
      * @param query Query Text
      * @param page Page Number
      */
-    fun searchMovie(query: String, page: Int) {
+    fun searchMoviesWithPage(query: String, page: Int) {
         viewModelScope.launch(Dispatchers.IO) {
-            _moviesSuccessCallback.postValue(repository.getSearched(query, page).value)
+            _moviesSuccessCallback.postValue(repository.searchMoviesWithPage(query, page).value)
+        }
+    }
+
+    /**
+     * Search Movie from Query
+     * @param query Query Text
+     */
+    fun searchMovies(query: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            _moviesSuccessCallback.postValue(repository.searchMovies(query).value)
         }
     }
 }
