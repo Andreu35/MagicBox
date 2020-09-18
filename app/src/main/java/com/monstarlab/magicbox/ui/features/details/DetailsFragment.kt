@@ -9,7 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
+import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.google.android.material.chip.Chip
 import com.monstarlab.magicbox.R
@@ -19,28 +19,22 @@ import com.monstarlab.magicbox.databinding.FragmentDetailsBinding
 import com.monstarlab.magicbox.extensions.autoCleared
 import com.monstarlab.magicbox.extensions.goneUnless
 import com.monstarlab.magicbox.ui.BaseFragment
-import com.monstarlab.magicbox.utils.Constants
 import com.monstarlab.magicbox.utils.Resource
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
-
 
 @AndroidEntryPoint
 class DetailsFragment : BaseFragment(), View.OnClickListener {
 
     private var binding: FragmentDetailsBinding by autoCleared()
     private val viewModel: DetailsViewModel by viewModels()
-
-    private var movieID: Int = 0
-    private var movieTitle: String = ""
     private var movie: Movie? = null
+    private val args: DetailsFragmentArgs by navArgs()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
-        movieID = requireArguments().getInt(Constants.ID)
-        movieTitle = requireArguments().getString(Constants.TITLE).toString()
-        transitionName = requireArguments().getString(Constants.TRANSITION_NAME).toString()
+        Timber.d(args.toString())
     }
 
     override fun onCreateView(
@@ -55,11 +49,11 @@ class DetailsFragment : BaseFragment(), View.OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.coverDetails.transitionName = transitionName
+        binding.coverDetails.transitionName = args.transitionName
 
         binding.favoriteIcon.setOnClickListener(this)
 
-        viewModel.movie.observe(viewLifecycleOwner, Observer {
+        viewModel.movie.observe(viewLifecycleOwner, {
             when (it.status) {
                 Resource.Status.SUCCESS -> {
                     movie = it.data
@@ -86,7 +80,7 @@ class DetailsFragment : BaseFragment(), View.OnClickListener {
             binding.favoriteIcon.setImageResource(if (it) R.drawable.ic_favorite_on else R.drawable.ic_favorite_off)
         })
 
-        viewModel.fetchMovie(movieID)
+        viewModel.fetchMovie(args.movieId)
     }
 
     /**

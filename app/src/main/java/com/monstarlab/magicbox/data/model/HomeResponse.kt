@@ -9,8 +9,4 @@ data class HomeResponse(
     val total_pages: Int,
     val results: MutableList<Movie>
 
-): Serializable {
-    override fun toString(): String {
-        return "HomeResponse(page=$page, total_results=$total_results, total_pages=$total_pages, results=$results)"
-    }
-}
+): Serializable

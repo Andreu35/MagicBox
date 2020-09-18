@@ -7,13 +7,13 @@ import kotlin.collections.ArrayList
 @Entity
 data class Movie(
 
+    @PrimaryKey val id: Int,
+    val imdb_id: String? = "",
     val adult: Boolean = false,
     val backdrop_path: String? = "",
     val budget: Int? = 0,
     val genres: List<Genre>? = ArrayList(),
     val homepage: String? = "",
-    @PrimaryKey val id: Int,
-    val imdb_id: String? = "",
     val original_language: String? = "",
     val original_title: String? = "",
     val overview: String? = "",

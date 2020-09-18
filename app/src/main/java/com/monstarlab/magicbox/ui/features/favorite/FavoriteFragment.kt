@@ -60,16 +60,19 @@ class FavoriteFragment : BaseFragment(), RecyclerItemClickListener {
     }
 
     override fun onItemClick(view: View, movie: Movie, position: Int) {
-        if(view.tag == COVER) {
-            val bundle = Bundle()
-            bundle.putString(Constants.TITLE, movie.title)
-            bundle.putInt(Constants.ID, movie.id)
-            bundle.putString(Constants.TRANSITION_NAME, view.transitionName)
-            openNewFragmentWithTransition(bundle, view, R.id.action_favorite_to_details)
-        }else{
-            this.position = position
-            this.movie = movie
-            viewModel.deleteFavorite(movie)
+        when (view.tag) {
+            COVER -> {
+                val bundle = Bundle()
+                bundle.putString(Constants.TITLE, movie.title)
+                bundle.putInt(Constants.ID, movie.id)
+                bundle.putString(Constants.TRANSITION_NAME, view.transitionName)
+                openNewFragmentWithTransition(bundle, view, R.id.action_favorite_to_details)
+            }
+            else -> {
+                this.position = position
+                this.movie = movie
+                viewModel.deleteFavorite(movie)
+            }
         }
     }
 
