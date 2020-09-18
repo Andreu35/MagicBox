@@ -17,6 +17,7 @@ import com.monstarlab.magicbox.utils.Constants
 import com.monstarlab.magicbox.utils.Resource
 import dagger.hilt.android.AndroidEntryPoint
 
+
 @AndroidEntryPoint
 class HomeFragment : BaseFragment(), RecyclerItemClickListener {
 
@@ -57,11 +58,18 @@ class HomeFragment : BaseFragment(), RecyclerItemClickListener {
                 actionMenuItem.collapseActionView()
                 return false
             }
-            override fun onQueryTextChange(s: String?): Boolean { return false }
+
+            override fun onQueryTextChange(s: String?): Boolean {
+                return false
+            }
         })
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
         setUpToolbar(binding.toolbar, showTitle = true, showHome = false)
         return binding.root
@@ -78,9 +86,7 @@ class HomeFragment : BaseFragment(), RecyclerItemClickListener {
                         // Get the current and total page
                         page = it.data.page
                         totalPages = it.data.total_pages
-
                         pushAdapter(it.data.results)
-
                         binding.recyclerView.addOnScrollListener(scrollListener)
                     }
                 }
@@ -122,13 +128,22 @@ class HomeFragment : BaseFragment(), RecyclerItemClickListener {
      */
     private fun pushAdapter(movies: MutableList<Movie>) {
         if(adapter == null) {
-            adapter = HomeAdapter(requireContext(), movies, this@HomeFragment, getString(R.string.searched))
+            adapter = HomeAdapter(
+                requireContext(),
+                movies,
+                this@HomeFragment,
+                getString(R.string.searched)
+            )
             binding.recyclerView.adapter = adapter
         }else{
             adapter?.insertMoreMovies(movies)
         }
     }
 
+    /**
+     * Clean adapter and fetch new data from query
+     * @param query Query String
+     */
     private fun cleanAndFetch(query: String){
         adapter?.cleanAdapter()
         adapter = null

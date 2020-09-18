@@ -63,7 +63,6 @@ class DetailsFragment : BaseFragment(), View.OnClickListener {
             when (it.status) {
                 Resource.Status.SUCCESS -> {
                     movie = it.data
-                    Timber.d(movie.toString())
                     Glide.with(this).load(getString(R.string.images_base_url, it.data?.backdrop_path)).into(binding.backgroundDetails)
                     Glide.with(this).load(getString(R.string.images_base_url, it.data?.poster_path)).into(binding.coverDetails)
                     binding.detailsData.detailsTitle.text = it.data?.title
@@ -79,8 +78,7 @@ class DetailsFragment : BaseFragment(), View.OnClickListener {
                     Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
                     binding.progressBar.goneUnless(false)
                 }
-                else -> {
-                }
+                else -> {}
             }
         })
 
@@ -116,6 +114,10 @@ class DetailsFragment : BaseFragment(), View.OnClickListener {
         }
     }
 
+    /**
+     * Generate the Genre chips to show on Details data
+     * @param categories Genre List
+     */
     @SuppressLint("InflateParams")
     fun setGenreChips(categories: List<Genre?>) {
         for (category in categories) {

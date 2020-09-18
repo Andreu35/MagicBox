@@ -1,15 +1,22 @@
 <resources>
     <string name="app_name">Magic Box</string>
+    <string name="filmmakers">for filmmakers</string>
     <string name="api_key">f4ec271066616fdcd36dbcbcdb685c71</string>
     <string name="images_base_url">https://image.tmdb.org/t/p/w500%s</string>
+
+    <!-- SPLASH SCREEN -->
+    <string name="magic_box">MAGIC BOX</string>
+
     <!-- HOME SCREEN -->
     <string name="popular">Popular Movies</string>
     <string name="searched">Search Result</string>
     <string name="home">Home</string>
-    <string name="favorite">Favorite</string>
+    <string name="favorite">Favorites</string>
     <string name="search">Search</string>
     <string name="search_movie">Your MagicBox is empty!!</string>
     <string name="search_movie2">Please, use the search tool to see all the movies.</string>
+    <string name="favorite_info">Your Favorites is empty!!</string>
+    <string name="favorite_info2">Please, add new favorite from Details Screen.</string>
 
     <!-- DETAILS SCREEN -->
     <string name="release_date">Release Date: %s</string>
