@@ -11,10 +11,10 @@ api_key=YOUR_API_KEY
 Based on Test-driven development and short time.<br>
 1. API Service
 2. Room Database
-2. Room Database DAO -> DAO Unit Test
+2. Room Database DAO
 3. Repository
 4. ViewModel
-5. DI & Refactoring
+5. Hilt Dependency Injection & Refactoring ( aplha version )
 6. Implementation of UI & Layouts
 7. Adding animations <br><br>
 
