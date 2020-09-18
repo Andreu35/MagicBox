@@ -5,22 +5,17 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.findNavController
 import androidx.transition.TransitionInflater
-import com.monstarlab.magicbox.data.pref.MagicBoxPreferences
 
 abstract class BaseFragment : Fragment() {
-    protected lateinit var transitionName: String
-    protected lateinit var preferences: MagicBoxPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         sharedElementEnterTransition = TransitionInflater.from(requireActivity()).inflateTransition(android.R.transition.move)
         sharedElementReturnTransition = TransitionInflater.from(requireActivity()).inflateTransition(android.R.transition.move)
         exitTransition = TransitionInflater.from(requireActivity()).inflateTransition(android.R.transition.move)
-        preferences = MagicBoxPreferences(requireActivity())
     }
 
     fun openNewFragmentWithTransition(bundle: Bundle?, view: View, action: Int) {
@@ -33,9 +28,10 @@ abstract class BaseFragment : Fragment() {
     }
 
     fun setUpToolbar(toolbar: Toolbar, showTitle: Boolean, showHome: Boolean) {
-        (activity as AppCompatActivity?)!!.setSupportActionBar(toolbar)
-        (activity as AppCompatActivity?)!!.supportActionBar!!.setDisplayShowTitleEnabled(showTitle)
-        (activity as AppCompatActivity?)!!.supportActionBar!!.setDisplayHomeAsUpEnabled(showHome)
+        val activity = (activity as AppCompatActivity)
+        activity.setSupportActionBar(toolbar)
+        activity.supportActionBar!!.setDisplayShowTitleEnabled(showTitle)
+        activity.supportActionBar!!.setDisplayHomeAsUpEnabled(showHome)
     }
 
     fun onBackPressed(){

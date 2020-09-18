@@ -8,6 +8,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
 import com.monstarlab.magicbox.R
 import com.monstarlab.magicbox.data.model.Movie
+import com.monstarlab.magicbox.data.pref.MagicBoxPreferences
 import com.monstarlab.magicbox.databinding.FragmentHomeBinding
 import com.monstarlab.magicbox.extensions.autoCleared
 import com.monstarlab.magicbox.extensions.goneUnless
@@ -16,6 +17,7 @@ import com.monstarlab.magicbox.ui.common.RecyclerItemClickListener
 import com.monstarlab.magicbox.utils.Constants
 import com.monstarlab.magicbox.utils.Resource
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 
 @AndroidEntryPoint
@@ -27,6 +29,9 @@ class HomeFragment : BaseFragment(), RecyclerItemClickListener {
     private var page: Int = 0
     private var totalPages: Int = 0
     private var querySearch: String = ""
+
+    @Inject
+    lateinit var preferences: MagicBoxPreferences
 
     private val scrollListener = object : RecyclerView.OnScrollListener() {
         override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
@@ -94,7 +99,8 @@ class HomeFragment : BaseFragment(), RecyclerItemClickListener {
                     Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
                     binding.progressBar.goneUnless(false)
                 }
-                else -> {
+                Resource.Status.LOADING -> {
+                    binding.progressBar.goneUnless(true)
                 }
             }
         })
@@ -158,7 +164,6 @@ class HomeFragment : BaseFragment(), RecyclerItemClickListener {
      */
     override fun onItemClick(view: View, movie: Movie, position: Int) {
         val bundle = Bundle()
-        bundle.putString(Constants.TITLE, movie.title)
         bundle.putInt(Constants.ID, movie.id)
         bundle.putString(Constants.TRANSITION_NAME, view.transitionName)
         openNewFragmentWithTransition(bundle, view, R.id.action_home_to_details)
@@ -180,7 +185,7 @@ class HomeFragment : BaseFragment(), RecyclerItemClickListener {
     override fun onResume() {
         super.onResume()
         if(preferences.contains(Constants.PREF_QUERY)){
-            preferences.getString(Constants.PREF_QUERY, "A")?.let {
+            preferences.getString(Constants.PREF_QUERY, "")?.let {
                 cleanAndFetch(it)
             }
         }

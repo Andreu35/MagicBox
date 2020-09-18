@@ -7,9 +7,9 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="0dp"
-        android:layout_height="150dp"
-        android:layout_margin="10dp"
-        app:cardCornerRadius="5dp"
+        android:layout_height="@dimen/common_150dp"
+        android:layout_margin="@dimen/common_10dp"
+        app:cardCornerRadius="@dimen/common_5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,10 +23,10 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/delete"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="@dimen/common_30dp"
+            android:layout_height="@dimen/common_30dp"
             android:layout_gravity="bottom|end"
-            android:layout_margin="5dp"
+            android:layout_margin="@dimen/common_5dp"
             android:src="@drawable/ic_delete"/>
 
     </androidx.cardview.widget.CardView>

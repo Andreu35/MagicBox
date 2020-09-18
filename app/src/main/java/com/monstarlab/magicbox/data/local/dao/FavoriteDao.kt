@@ -15,9 +15,6 @@ interface FavoriteDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertFavorite(vararg movies: Movie)
 
-    @Update
-    fun updateFavorite(movie: Movie) // Unused this time
-
     @Delete
     fun deleteFavorite(movie: Movie)
 

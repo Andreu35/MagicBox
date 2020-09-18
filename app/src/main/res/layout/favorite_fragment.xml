@@ -22,17 +22,17 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="24sp"
+                android:textSize="@dimen/text_size_24"
                 android:layout_gravity="center"
                 android:textAlignment="center"
                 android:textColor="@color/colorAccent"
                 android:text="@string/favorite_info"/>
 
             <TextView
-                android:layout_width="200dp"
+                android:layout_width="@dimen/common_200dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:textSize="18sp"
+                android:layout_marginTop="@dimen/common_10dp"
+                android:textSize="@dimen/text_size_18"
                 android:textAlignment="center"
                 android:textColor="@color/light_gray"
                 android:text="@string/favorite_info2"/>
@@ -61,7 +61,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
                     android:background="@color/colorPrimary"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="@dimen/common_24dp"
                     app:layout_scrollFlags="scroll|enterAlways"
                     app:title="@string/favorite"
                     app:titleTextColor="@color/colorAccent" />

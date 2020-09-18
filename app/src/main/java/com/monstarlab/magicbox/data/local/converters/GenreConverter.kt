@@ -15,7 +15,6 @@ class GenreConverter {
 
     @TypeConverter
     fun fromList(list: List<Genre>?): String {
-        val gson = Gson()
-        return gson.toJson(list)
+        return Gson().toJson(list)
     }
 }
