@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/home_fragment">
+
+    <fragment
+        android:id="@+id/home_fragment"
+        android:name="com.monstarlab.magicbox.ui.features.home.HomeFragment"
+        tool:layout="@layout/fragment_home">
+
+        <action
+            android:id="@+id/action_home_to_details"
+            app:destination="@id/details_fragment"
+            app:popUpTo="@id/home_fragment"
+            app:enterAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_out"
+            app:exitAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_in"/>
+
+        <action
+            android:id="@+id/action_home_to_favorite"
+            app:destination="@id/favorite_fragment"
+            app:popUpTo="@id/home_fragment"
+            app:enterAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_out"
+            app:exitAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_in"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/details_fragment"
+        android:name="com.monstarlab.magicbox.ui.features.details.DetailsFragment"
+        android:label="DetailsFragment"
+        tool:layout="@layout/fragment_details"/>
+
+    <fragment
+        android:id="@+id/favorite_fragment"
+        android:name="com.monstarlab.magicbox.ui.features.favorite.FavoriteFragment"
+        android:label="FavoriteFragment"
+        tool:layout="@layout/favorite_fragment">
+
+        <action
+            android:id="@+id/action_favorite_to_details"
+            app:destination="@id/details_fragment"
+            app:popUpTo="@id/favorite_fragment"
+            app:enterAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_out"
+            app:exitAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_in"/>
+
+    </fragment>
+
+</navigation>
