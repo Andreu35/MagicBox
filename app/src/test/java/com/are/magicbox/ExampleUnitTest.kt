@@ -1,4 +1,4 @@
-package com.monstarlab.magicbox
+package com.are.magicbox
 
 import org.junit.Test
 
