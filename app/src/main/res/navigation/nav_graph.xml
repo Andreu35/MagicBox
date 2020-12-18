@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/splash_fragment"
-        android:name="com.monstarlab.magicbox.ui.features.splash.SplashFragment"
+        android:name="com.are.magicbox.ui.features.splash.SplashFragment"
         tool:layout="@layout/fragment_splash">
 
         <action
@@ -24,7 +24,7 @@
 
     <fragment
         android:id="@+id/home_fragment"
-        android:name="com.monstarlab.magicbox.ui.features.home.HomeFragment"
+        android:name="com.are.magicbox.ui.features.home.HomeFragment"
         tool:layout="@layout/fragment_home">
 
         <action
@@ -49,7 +49,7 @@
 
     <fragment
         android:id="@+id/details_fragment"
-        android:name="com.monstarlab.magicbox.ui.features.details.DetailsFragment"
+        android:name="com.are.magicbox.ui.features.details.DetailsFragment"
         android:label="DetailsFragment"
         tool:layout="@layout/fragment_details">
         <argument
@@ -62,7 +62,7 @@
 
     <fragment
         android:id="@+id/favorite_fragment"
-        android:name="com.monstarlab.magicbox.ui.features.favorite.FavoriteFragment"
+        android:name="com.are.magicbox.ui.features.favorite.FavoriteFragment"
         android:label="FavoriteFragment"
         tool:layout="@layout/favorite_fragment">
 
